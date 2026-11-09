@@ -1,0 +1,66 @@
+{
+  "jobs": [
+    {
+      "id": 12345,
+      "internal_job_id": 54321,
+      "title": "Junior Data Analyst",
+      "updated_at": "2026-11-08T10:00:00-05:00",
+      "requisition_id": "DA-001",
+      "location": {
+        "name": "Remote - Americas"
+      },
+      "absolute_url": "https://boards.greenhouse.io/example/jobs/12345",
+      "language": "en",
+      "metadata": null,
+      "content": "<p>We are looking for a <strong>Junior Data Analyst</strong>.</p><p>Requirements:</p><ul><li>Python</li><li>SQL</li><li>Pandas</li></ul>",
+      "departments": [
+        {
+          "id": 1,
+          "name": "Data"
+        }
+      ],
+      "offices": [
+        {
+          "id": 2,
+          "name": "Remote",
+          "location": "Americas"
+        }
+      ]
+    },
+    {
+      "id": 12346,
+      "internal_job_id": 54322,
+      "title": "Business Intelligence Analyst",
+      "updated_at": "2026-11-08T11:00:00Z",
+      "requisition_id": "BI-002",
+      "location": {
+        "name": "Remote - United States"
+      },
+      "absolute_url": "https://boards.greenhouse.io/example/jobs/12346",
+      "language": "en",
+      "metadata": null,
+      "content": "<p>Experience with SQL and Tableau.</p>",
+      "departments": [
+        {
+          "id": 3,
+          "name": "Business Intelligence"
+        }
+      ],
+      "offices": []
+    },
+    {
+      "id": 12347,
+      "internal_job_id": null,
+      "title": "General Talent Pool",
+      "updated_at": "2026-11-08T12:00:00Z",
+      "location": {
+        "name": "Remote"
+      },
+      "absolute_url": "https://boards.greenhouse.io/example/jobs/12347",
+      "content": "Submit your resume for future opportunities."
+    }
+  ],
+  "meta": {
+    "total": 3
+  }
+}

@@ -18,9 +18,7 @@ def test_v1_database_migrates_to_v2(tmp_path: Path) -> None:
         )
     """)
 
-    connection.execute(
-        "INSERT INTO schema_version(version) VALUES (1)"
-    )
+    connection.execute("INSERT INTO schema_version(version) VALUES (1)")
 
     connection.commit()
     connection.close()
@@ -29,16 +27,9 @@ def test_v1_database_migrates_to_v2(tmp_path: Path) -> None:
 
     connection = sqlite3.connect(database_path)
 
-    version = connection.execute(
-        "SELECT version FROM schema_version"
-    ).fetchone()[0]
+    version = connection.execute("SELECT version FROM schema_version").fetchone()[0]
 
-    columns = {
-        row[1]
-        for row in connection.execute(
-            "PRAGMA table_info(ats_boards)"
-        ).fetchall()
-    }
+    columns = {row[1] for row in connection.execute("PRAGMA table_info(ats_boards)").fetchall()}
 
     connection.close()
 

@@ -1,7 +1,7 @@
 from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from uuid import uuid4
 from typing import Any
+from uuid import uuid4
 
 from job_discovery.database.connection import get_connection
 from job_discovery.discovery.domain import normalize_domain
