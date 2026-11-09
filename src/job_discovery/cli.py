@@ -4,6 +4,8 @@ from pathlib import Path
 
 from job_discovery.core.config import load_settings
 from job_discovery.core.logging import configure_logging
+from job_discovery.database.repository import Repository
+from job_discovery.registry.service import CompanyRegistry
 
 
 def create_parser() -> argparse.ArgumentParser:
@@ -31,6 +33,15 @@ def create_parser() -> argparse.ArgumentParser:
         help="Validate application configuration.",
     )
 
+    subparsers.add_parser(
+        "stats",
+        help="Display database record counts.",
+    )
+
+    subparsers.add_parser(
+        "registry",
+        help="Display registered companies and ATS boards.",
+    )
     return parser
 
 
@@ -73,8 +84,47 @@ def main() -> None:
             for directory in directories:
                 directory.mkdir(parents=True, exist_ok=True)
 
+            # Checks whether connection is valid
+            Repository(settings.storage.database_path)
+
             # Prints to logger
             logger.info("Application directories initialized.")
+            logger.info("SQLite database initialized.")
+            return
+
+        if args.command == "stats":
+            repository = Repository(settings.storage.database_path)
+
+            for table, count in repository.count_records().items():
+                logger.info("%-20s %d", table, count)
+
+            return
+
+        if args.command == "registry":
+            registry = CompanyRegistry(settings.storage.database_path)
+
+            companies = registry.get_active_companies()
+            boards = registry.get_active_boards()
+
+            logger.info("Registered companies: %d", len(companies))
+
+            for company in companies:
+                logger.info(
+                    "COMPANY | %s | %s",
+                    company["name"],
+                    company["normalized_domain"] or "No domain",
+                )
+
+            logger.info("Registered ATS boards: %d", len(boards))
+
+            for board in boards:
+                logger.info(
+                    "BOARD | %s | %s | %s",
+                    board["company_name"],
+                    board["platform"],
+                    board["board_identifier"],
+                )
+
             return
 
     except (FileNotFoundError, ValueError) as exc:

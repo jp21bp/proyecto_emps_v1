@@ -1,4 +1,5 @@
 from datetime import UTC, datetime
+from enum import StrEnum
 from uuid import UUID, uuid4
 
 from pydantic import BaseModel, ConfigDict, Field, HttpUrl
@@ -6,6 +7,15 @@ from pydantic import BaseModel, ConfigDict, Field, HttpUrl
 
 def utc_now() -> datetime:
     return datetime.now(UTC)
+
+
+class ATSPlatform(StrEnum):
+    GREENHOUSE = "GREENHOUSE"
+    LEVER = "LEVER"
+    ASHBY = "ASHBY"
+    SMARTRECRUITERS = "SMARTRECRUITERS"
+    WORKDAY = "WORKDAY"
+    GENERIC = "GENERIC"
 
 
 class CompanyCreate(BaseModel):
@@ -21,6 +31,7 @@ class CompanyCreate(BaseModel):
 
 class Company(CompanyCreate):
     id: UUID = Field(default_factory=uuid4)
+    normalized_domain: str | None = None
     first_seen_at: datetime = Field(default_factory=utc_now)
     last_seen_at: datetime = Field(default_factory=utc_now)
     is_active: bool = True
@@ -30,7 +41,7 @@ class ATSBoardCreate(BaseModel):
     model_config = ConfigDict(str_strip_whitespace=True)
 
     company_id: UUID
-    platform: str = Field(min_length=1, max_length=50)
+    platform: ATSPlatform
     board_identifier: str = Field(min_length=1, max_length=255)
     board_url: HttpUrl | None = None
 
@@ -38,5 +49,9 @@ class ATSBoardCreate(BaseModel):
 class ATSBoard(ATSBoardCreate):
     id: UUID = Field(default_factory=uuid4)
     first_seen_at: datetime = Field(default_factory=utc_now)
-    last_checked_at: datetime | None = None
+    last_attempted_at: datetime | None = None
+    last_successful_at: datetime | None = None
+    consecutive_failures: int = Field(default=0, ge=0)
+    last_error: str | None = None
+    next_check_at: datetime | None = None
     is_active: bool = True
