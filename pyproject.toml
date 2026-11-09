@@ -3,9 +3,6 @@ name = "job-discovery"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-authors = [
-    { name = "JP", email = "jowapra@gmail.com" }
-]
 requires-python = ">=3.12"
 dependencies = [
     "beautifulsoup4>=4.15.0",
@@ -31,6 +28,7 @@ dev = [
     "pytest>=9.2.0",
     "pytest-cov>=7.1.0",
     "ruff>=0.17.4",
+    "types-pyyaml>=6.0.12.20261103",
 ]
 
 

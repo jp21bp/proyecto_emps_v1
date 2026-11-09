@@ -1,0 +1,23 @@
+project:
+  name: job-discovery
+  environment: development
+
+storage:
+  database_path: data/jobs.db
+  raw_data_dir: data/raw
+  exports_dir: data/exports
+
+logging:
+  directory: logs
+  level: INFO
+  filename: application.log
+
+http:
+  timeout_seconds: 30
+  request_interval_seconds: 2.0
+  max_retries: 3
+  user_agent: "JobDiscovery/0.1 (personal research project)"
+
+discovery:
+  company_discovery_enabled: false
+  search_discovery_enabled: false
