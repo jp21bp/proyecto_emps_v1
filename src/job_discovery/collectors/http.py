@@ -151,6 +151,9 @@ class ATSHTTPClient:
                 )
 
             try:
+                # print('RESPONSE', response)
+                # print(response.text)
+                # print(response.headers)
                 return response.json()
 
             except ValueError as exc:
@@ -162,6 +165,8 @@ class ATSHTTPClient:
         """Retrieve a JSON object."""
 
         payload = self.get_json_data(url)
+
+        # print('PAYLOAD', payload)
 
         if not isinstance(payload, dict):
             raise ATSHTTPError("Expected a JSON object from ATS endpoint.")

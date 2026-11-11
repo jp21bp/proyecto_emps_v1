@@ -260,6 +260,7 @@ class LeverCollector(BaseCollector):
             skip = page_number * self.page_size
 
             url = self._build_url(site, skip)
+            print('Lever URL', url)
 
             page = self.http.get_json_list(url)
 

@@ -286,6 +286,7 @@ class AshbyCollector(BaseCollector):
             raise ValueError("Ashby board identifier cannot be empty.")
 
         url = self._build_url(board)
+        print('Ashby URL', url)
 
         payload = self.http.get_json(url)
 

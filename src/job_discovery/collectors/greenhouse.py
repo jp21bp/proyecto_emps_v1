@@ -147,6 +147,7 @@ class GreenhouseCollector(BaseCollector):
         encoded_identifier = quote(board_identifier, safe="")
 
         url = f"{self.BASE_URL}/{encoded_identifier}/jobs"
+        print('Greenhouse URL',url)
 
         payload = self.http.get_json(f"{url}?content=true")
 
