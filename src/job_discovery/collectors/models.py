@@ -5,7 +5,7 @@ from pydantic import BaseModel, ConfigDict, Field
 
 
 class CollectorJob(BaseModel):
-    """Normalized representation of a job returned by an ATS."""
+    """Normalized representation of an ATS job listing."""
 
     model_config = ConfigDict(extra="ignore")
 
@@ -14,6 +14,7 @@ class CollectorJob(BaseModel):
 
     application_url: str | None = None
     location: str | None = None
+    country_code: str | None = None
 
     description_html: str | None = None
     description_text: str | None = None
@@ -22,8 +23,17 @@ class CollectorJob(BaseModel):
     offices: list[str] = Field(default_factory=list)
 
     employment_type: str | None = None
+    workplace_type: str | None = None
+
     publication_date: datetime | None = None
+    source_created_at: datetime | None = None
     updated_at: datetime | None = None
+
+    salary_currency: str | None = None
+    salary_min: float | None = None
+    salary_max: float | None = None
+    salary_interval: str | None = None
+    salary_description: str | None = None
 
     language: str | None = None
     requisition_id: str | None = None

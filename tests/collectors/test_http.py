@@ -143,3 +143,49 @@ def test_retry_after_429(monkeypatch: pytest.MonkeyPatch) -> None:
 
     http.close()
     client.close()
+
+
+def test_successful_json_array_request() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            json=[{"id": "001"}, {"id": "002"}],
+        )
+
+    client = httpx.Client(transport=httpx.MockTransport(handler))
+
+    http = ATSHTTPClient(
+        client=client,
+        max_retries=0,
+        min_request_interval=0,
+    )
+
+    result = http.get_json_list("https://example.com/jobs")
+
+    assert len(result) == 2
+    assert result[0]["id"] == "001"
+
+    http.close()
+    client.close()
+
+
+def test_json_list_rejects_object() -> None:
+    def handler(request: httpx.Request) -> httpx.Response:
+        return httpx.Response(
+            200,
+            json={"jobs": []},
+        )
+
+    client = httpx.Client(transport=httpx.MockTransport(handler))
+
+    http = ATSHTTPClient(
+        client=client,
+        max_retries=0,
+        min_request_interval=0,
+    )
+
+    with pytest.raises(ATSHTTPError, match="JSON array"):
+        http.get_json_list("https://example.com/jobs")
+
+    http.close()
+    client.close()

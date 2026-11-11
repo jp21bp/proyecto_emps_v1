@@ -67,7 +67,6 @@ class ATSHTTPClient:
 
     def _wait_for_request_slot(self) -> None:
         elapsed = time.monotonic() - self._last_request_at
-
         remaining = self.min_request_interval - elapsed
 
         if remaining > 0:
@@ -98,23 +97,28 @@ class ATSHTTPClient:
             except (TypeError, ValueError, OverflowError):
                 return None
 
-    def _backoff(self, attempt: int, retry_after: float | None) -> None:
+    def _backoff(
+        self,
+        attempt: int,
+        retry_after: float | None,
+    ) -> None:
         exponential = min(
             self.backoff_factor * (2**attempt),
             self.max_backoff,
         )
 
         delay = max(exponential, retry_after or 0.0)
-
-        # Positive jitter avoids synchronized retry bursts.
         delay += random.uniform(0.0, min(1.0, delay * 0.1))
 
-        logger.warning("Retrying ATS request in %.2f seconds.", delay)
+        logger.warning(
+            "Retrying ATS request in %.2f seconds.",
+            delay,
+        )
 
         time.sleep(delay)
 
-    def get_json(self, url: str) -> dict[str, Any]:
-        """Perform a GET request and return a validated JSON object."""
+    def get_json_data(self, url: str) -> Any:
+        """Retrieve JSON without assuming its top-level structure."""
 
         for attempt in range(self.max_retries + 1):
             self._wait_for_request_slot()
@@ -147,13 +151,29 @@ class ATSHTTPClient:
                 )
 
             try:
-                payload = response.json()
+                return response.json()
+
             except ValueError as exc:
                 raise ATSHTTPError("ATS returned invalid JSON.") from exc
 
-            if not isinstance(payload, dict):
-                raise ATSHTTPError("Expected a JSON object from ATS endpoint.")
-
-            return payload
-
         raise ATSHTTPError("ATS request failed unexpectedly.")
+
+    def get_json(self, url: str) -> dict[str, Any]:
+        """Retrieve a JSON object."""
+
+        payload = self.get_json_data(url)
+
+        if not isinstance(payload, dict):
+            raise ATSHTTPError("Expected a JSON object from ATS endpoint.")
+
+        return payload
+
+    def get_json_list(self, url: str) -> list[Any]:
+        """Retrieve a JSON array."""
+
+        payload = self.get_json_data(url)
+
+        if not isinstance(payload, list):
+            raise ATSHTTPError("Expected a JSON array from ATS endpoint.")
+
+        return payload

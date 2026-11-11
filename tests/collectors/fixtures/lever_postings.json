@@ -1,0 +1,80 @@
+[
+  {
+    "id": "lever-job-001",
+    "text": "Junior Data Analyst",
+    "createdAt": 1794153600000,
+    "updatedAt": 1794240000000,
+    "categories": {
+      "location": "Remote - Americas",
+      "team": "Data",
+      "department": "Analytics",
+      "commitment": "Full-time",
+      "allLocations": [
+        "Remote - Americas",
+        "United States",
+        "Latin America"
+      ],
+      "level": "Entry-level"
+    },
+    "country": null,
+    "description": "<p>We are seeking a <strong>Junior Data Analyst</strong>.</p><p>Requirements include SQL and Python.</p>",
+    "descriptionPlain": "We are seeking a Junior Data Analyst.\nRequirements include SQL and Python.",
+    "hostedUrl": "https://jobs.lever.co/example/lever-job-001",
+    "applyUrl": "https://jobs.lever.co/example/lever-job-001/apply",
+    "workplaceType": "remote",
+    "salaryRange": {
+      "currency": "USD",
+      "interval": "per-year-salary",
+      "min": 45000,
+      "max": 60000
+    },
+    "salaryDescription": "<p>$45,000 - $60,000 annually</p>",
+    "salaryDescriptionPlain": "$45,000 - $60,000 annually",
+    "reqCode": "DA-001"
+  },
+  {
+    "id": "lever-job-002",
+    "text": "Business Intelligence Analyst",
+    "createdAt": 1794153600000,
+    "updatedAt": 1794240000000,
+    "categories": {
+      "location": "Remote - United States",
+      "team": "Business Intelligence",
+      "department": "Operations",
+      "commitment": "Full-time",
+      "allLocations": [
+        "Remote - United States"
+      ],
+      "level": "Associate"
+    },
+    "country": "US",
+    "description": "<p>Experience with Tableau and SQL.</p>",
+    "descriptionPlain": "Experience with Tableau and SQL.",
+    "hostedUrl": "https://jobs.lever.co/example/lever-job-002",
+    "applyUrl": "https://jobs.lever.co/example/lever-job-002/apply",
+    "workplaceType": "remote",
+    "salaryRange": null,
+    "salaryDescription": null,
+    "reqCode": "BI-002"
+  },
+  {
+    "id": "lever-job-003",
+    "text": "Data Engineering Intern",
+    "createdAt": 1794153600000,
+    "updatedAt": 1794240000000,
+    "categories": {
+      "location": "Remote",
+      "team": "Engineering",
+      "department": "Data",
+      "commitment": "Intern",
+      "allLocations": ["Remote"]
+    },
+    "country": null,
+    "description": "<p>Python and ETL experience preferred.</p>",
+    "descriptionPlain": "Python and ETL experience preferred.",
+    "hostedUrl": "https://jobs.lever.co/example/lever-job-003",
+    "applyUrl": "https://jobs.lever.co/example/lever-job-003/apply",
+    "workplaceType": "unspecified",
+    "reqCode": "DE-003"
+  }
+]
