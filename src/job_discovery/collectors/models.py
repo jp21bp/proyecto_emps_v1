@@ -15,6 +15,7 @@ class CollectorJob(BaseModel):
     application_url: str | None = None
     location: str | None = None
     country_code: str | None = None
+    country: str | None = None
 
     description_html: str | None = None
     description_text: str | None = None
@@ -24,6 +25,7 @@ class CollectorJob(BaseModel):
 
     employment_type: str | None = None
     workplace_type: str | None = None
+    is_remote: bool | None = None
 
     publication_date: datetime | None = None
     source_created_at: datetime | None = None

@@ -1,3 +1,4 @@
+from job_discovery.collectors.ashby import AshbyCollector
 from job_discovery.collectors.greenhouse import GreenhouseCollector
 from job_discovery.collectors.lever import LeverCollector
 from job_discovery.collectors.models import (
@@ -6,6 +7,7 @@ from job_discovery.collectors.models import (
 )
 
 __all__ = [
+    "AshbyCollector",
     "GreenhouseCollector",
     "LeverCollector",
     "CollectionResult",

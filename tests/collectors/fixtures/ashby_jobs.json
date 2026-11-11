@@ -1,0 +1,105 @@
+{
+  "apiVersion": "1",
+  "jobs": [
+    {
+      "title": "Junior Data Analyst",
+      "location": "Remote - Americas",
+      "secondaryLocations": [
+        {
+          "location": "Latin America",
+          "address": {
+            "addressLocality": "Bogota",
+            "addressRegion": "Cundinamarca",
+            "addressCountry": "Colombia"
+          }
+        }
+      ],
+      "department": "Data",
+      "team": "Analytics",
+      "isListed": true,
+      "isRemote": true,
+      "workplaceType": "Remote",
+      "descriptionHtml": "<p>We are looking for a <strong>Junior Data Analyst</strong>.</p><p>Requirements include SQL, Python and Pandas.</p>",
+      "descriptionPlain": "We are looking for a Junior Data Analyst.\nRequirements include SQL, Python and Pandas.",
+      "publishedAt": "2026-11-08T16:21:55.393Z",
+      "employmentType": "FullTime",
+      "address": {
+        "postalAddress": {
+          "addressLocality": "Bogota",
+          "addressRegion": "Cundinamarca",
+          "addressCountry": "Colombia"
+        }
+      },
+      "jobUrl": "https://jobs.ashbyhq.com/example-company/job-001",
+      "applyUrl": "https://jobs.ashbyhq.com/example-company/job-001/application",
+      "compensation": {
+        "compensationTierSummary": "$45K - $60K USD",
+        "scrapeableCompensationSalarySummary": "$45K - $60K",
+        "summaryComponents": [
+          {
+            "compensationType": "Salary",
+            "interval": "1 YEAR",
+            "currencyCode": "USD",
+            "minValue": 45000,
+            "maxValue": 60000
+          },
+          {
+            "compensationType": "EquityPercentage",
+            "interval": "NONE",
+            "currencyCode": null,
+            "minValue": 0.5,
+            "maxValue": 1.5
+          }
+        ]
+      }
+    },
+    {
+      "title": "Business Intelligence Analyst",
+      "location": "Remote - United States",
+      "secondaryLocations": [],
+      "department": "Business Intelligence",
+      "team": "Operations",
+      "isListed": true,
+      "isRemote": true,
+      "workplaceType": "Remote",
+      "descriptionHtml": "<p>Experience with SQL and Tableau.</p>",
+      "descriptionPlain": "Experience with SQL and Tableau.",
+      "publishedAt": "2026-11-08T17:00:00Z",
+      "employmentType": "FullTime",
+      "address": {
+        "postalAddress": {
+          "addressLocality": "Austin",
+          "addressRegion": "Texas",
+          "addressCountry": "USA"
+        }
+      },
+      "jobUrl": "https://jobs.ashbyhq.com/example-company/job-002",
+      "applyUrl": "https://jobs.ashbyhq.com/example-company/job-002/application"
+    },
+    {
+      "title": "Data Engineering Intern",
+      "location": "Remote",
+      "department": "Engineering",
+      "team": "Data",
+      "isListed": true,
+      "isRemote": true,
+      "workplaceType": "Remote",
+      "descriptionHtml": "<p>Python and ETL experience preferred.</p>",
+      "descriptionPlain": "Python and ETL experience preferred.",
+      "publishedAt": "2026-11-08T18:00:00Z",
+      "employmentType": "Intern",
+      "jobUrl": "https://jobs.ashbyhq.com/example-company/job-003",
+      "applyUrl": "https://jobs.ashbyhq.com/example-company/job-003/application"
+    },
+    {
+      "title": "Unlisted Internal Position",
+      "location": "Remote",
+      "isListed": false,
+      "isRemote": true,
+      "workplaceType": "Remote",
+      "employmentType": "FullTime",
+      "jobUrl": "https://jobs.ashbyhq.com/example-company/job-004",
+      "applyUrl": "https://jobs.ashbyhq.com/example-company/job-004/application"
+    }
+  ]
+}
